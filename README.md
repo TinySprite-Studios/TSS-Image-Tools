@@ -2,6 +2,8 @@
 
 TSS Image Tools is a Windows app for processing single images or batches.
 
+PLEASE USE THE RIGHT HAND SIDE `RELEASES` SECTION FOR LATEST VERSION
+
 ## Quick Start
 1. Extract the whole release folder, keeping `models`, `licenses`, `assets`, and the DLLs beside `TssImageTools.App.exe`, then run it.
 2. Add files with `Add Files` or `Add Folder`.
