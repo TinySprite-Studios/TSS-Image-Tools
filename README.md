@@ -1,119 +1,99 @@
+<div align="center">
+
+<img src="docs/images/logo.png" alt="TSS Image Tools" width="300">
+
 # TSS Image Tools
 
-TSS Image Tools is a Windows app for processing single images or batches.
+**A desktop image toolkit for creators, developers and everyday image jobs.**
 
-PLEASE USE THE RIGHT HAND SIDE `RELEASES` SECTION FOR LATEST VERSION
+Convert, resize, compress, remove backgrounds, add watermarks, extract cutouts, edit metadata and organise filenames in one Windows app.
 
-## Quick Start
-1. Extract the whole release folder, keeping `models`, `licenses`, `assets`, and the DLLs beside `TssImageTools.App.exe`, then run it.
-2. Add files with `Add Files` or `Add Folder`.
-3. Choose your `Action`.
-4. Set `Output Root Folder`.
-5. Check preview (for Watermark and Remove Background).
-6. Click `Start Processing`.
-7. On completion, use `View Files` to open the output folder.
+**v1.0.0 · Windows x64 · Batch processing · Originals preserved**
 
-## Queue Limits
-- Convert, Resize, Compress: up to `5000` files
-- Watermark: up to `100` files
-- Remove Background: up to `50` files
+[**Download the latest release**](https://github.com/TinySprite-Studios/TSS-Image-Tools/releases/latest)
 
-## Output Location
-The app writes new files only (non-destructive):
-`<your selected output folder>/exported_images/yyyy-MM-dd_HH-mm-ss/`
+</div>
 
-Original images are never deleted or overwritten.
+## Download and run
 
-## Modules
+1. Open **[Releases](https://github.com/TinySprite-Studios/TSS-Image-Tools/releases/latest)** and download **TSS-Image-Tools-win-x64.zip** from the release assets.
+2. Extract the **entire ZIP** into a folder.
+3. Run **TssImageTools.App.exe**.
 
-### 1. Convert
-Convert image format between:
-- PNG
-- JPG
-- WEBP
-- GIF (single-frame output)
-- BMP
-- ICO
+Keep the `assets`, `models`, `licenses` folders and DLL files beside the EXE. Moving just the EXE will leave required files behind. Use the release ZIP rather than GitHub's automatically generated **Source code** downloads.
 
-Steps:
-1. Select `Action: Convert`
-2. Choose `Convert To`
-3. Start processing
+The release includes the background-removal model and runtime. No Python installation, account or separate model download is needed.
 
-### 2. Resize
-Resize images to exact pixel dimensions.
+## Explore the app
 
-Fill modes:
-- `Stretch`: forces exact width/height
-- `Center`: keeps aspect, centers on canvas
-- `Fit`: keeps aspect inside target bounds
+These screenshots show the v1.0.0 app with example images and filenames.
 
-Steps:
-1. Select `Action: Resize`
-2. Set width and height
-3. Choose fill mode
-4. Start processing
+### Image Cutout
 
-### 3. Compress
-Reduce file size using quality setting.
+Open the editor directly from the sidebar, load an image and place boxes around the areas you want to export. Resize boxes, duplicate selections and zoom in for precise placement. Your cutout work stays in place when switching tools during the session.
 
-Steps:
-1. Select `Action: Compress`
-2. Set `Quality (1-100)`
-3. Start processing
+![Image Cutout workspace with a red pickup image, a selected cutout box and export controls](docs/images/image-cutout.png)
 
-### 4. Watermark
-Add either text watermark or image watermark.
+### Metadata
 
-Watermark type:
-- `Text`
-- `Image`
+Inspect and search embedded EXIF, IPTC and XMP tags. Edit title, description, author, copyright, keywords, capture date, camera and software fields, then save a new image. You can also remove descriptive metadata while keeping colour profiles.
 
-Anchor positions:
-- TopLeft, TopCenter, TopRight
-- LeftCenter, Center, RightCenter
-- BottomLeft, BottomCenter, BottomRight
-- `Span` (tiles watermark across image with transparency)
+![Metadata editor showing an image preview, searchable tags and editable descriptive fields](docs/images/metadata.png)
 
-Available controls:
-- Opacity
-- Margin
-- Text size (text mode)
-- Image scale (image mode)
+Metadata exports support PNG, JPEG and WebP. PNG/WebP outputs are lossless 8-bit images; JPEG is re-encoded. Only the first frame is saved. Technical tags are available for inspection; the editable fields appear on the right.
 
-Steps:
-1. Select `Action: Watermark`
-2. Choose watermark type
-3. Enter watermark text or browse watermark image
-4. Choose anchor and transparency settings
-5. Use preview to confirm result
-6. Start processing
+### Smart rename
 
-### 5. Remove Background
-AI subject removal runs offline using bundled ONNX Runtime and U2Net. No Python, account or model download is required. The first preview takes longer while the model loads. Inspect fine edges, glass, and images with many separate objects.
+Review new filenames before exporting renamed copies. Combine prefixes, suffixes, numbering, find/replace and case changes. Keep the whole name, a character range or selected parts separated by a delimiter.
 
-Steps:
-1. Select `Background`.
-2. Choose `Auto removal` for objects/photos, or `Background colour` for plain backgrounds. Colour mode has a 0–100% tolerance slider and editable number; high values can erase the subject.
-3. Check preview result carefully
-4. Remove unwanted files from queue if needed
-5. Start processing when satisfied
+![Smart rename workspace showing original filenames beside generated names and naming options](docs/images/smart-rename.png)
 
-## Metadata and Smart rename
+For example, keep parts **1 and 3** of `IMG_2026_RED_001.png`, add `shop_` and enable numbering to produce `shop_IMG_RED_001.png`. Renamed copies preserve file contents, and duplicate names receive a unique suffix.
 
-- **Metadata:** inspect/search embedded tags and edit title, description, author, copyright, keywords, capture date and camera/software fields. Save as a new PNG, JPEG or WebP. Existing files are never overwritten. PNG/WebP are lossless 8-bit outputs; JPEG is re-encoded and only the first frame is saved. Technical tags are inspected read-only. Optionally remove descriptive metadata while keeping colour profiles.
-- **Smart rename:** add files/folders, then preview prefixes/suffixes, kept characters or name parts, find/replace, case and numbering. Export creates renamed copies in a new folder, preserving file contents. Names and collisions are handled safely, with up to 5000 files. Settings are remembered.
+## Tools at a glance
 
+| Tool | What you can do |
+| --- | --- |
+| Convert | Export PNG, JPG, WebP, GIF, BMP or ICO. GIF output is single-frame. |
+| Resize | Set dimensions with Stretch, Center or Fit modes. |
+| Compress | Adjust output quality to reduce file size. |
+| Background | Use **Auto removal** for subjects or **Background colour** for plain backgrounds, with a 0-100% tolerance slider and editable value. |
+| Watermark | Add text or a logo; set position, opacity, margin and size, or tile it across the image. |
+| Smart rename | Preview naming rules and export renamed copies of up to 5,000 files. |
+| Image Cutout | Create and export multiple rectangular cutouts from an image. |
+| Metadata | Inspect tags, edit descriptive fields or remove metadata, then save a new copy. |
 
-## Image Cutout
+Auto removal uses bundled ONNX Runtime and U2Net. The first preview can take longer while the model loads. Review fine edges, glass and images containing many separate objects before exporting.
 
-Click its left navigation button to open the editor directly. Load an image, add/duplicate boxes, drag their edges to resize, and choose Export cutouts. Switching tools preserves your editing work for this session. Ctrl+O loads an image, Ctrl+D duplicates a box, Delete removes the selected box, and Ctrl+Enter exports.
+## Batch workflow
 
-## During Processing
+1. Choose a tool from the sidebar.
+2. Add files or a folder.
+3. Adjust the settings and review the preview.
+4. Choose where to save and click **Export**.
 
-- A progress window appears.
-- You can click `Cancel` at any time.
+Batch exports go into a new timestamped folder beneath your chosen destination. Metadata uses a Save As dialog; Image Cutout has its own export controls. Original files stay untouched.
 
-## After Processing
-- A completion popup shows success/fail counts.
-- Click `View Files` to open the export folder immediately.
+| Tool | Batch limit |
+| --- | ---: |
+| Convert, Resize, Compress | 5,000 images |
+| Smart rename | 5,000 images |
+| Watermark | 100 images |
+| Background | 50 images |
+
+## Image Cutout shortcuts
+
+| Shortcut | Action |
+| --- | --- |
+| Ctrl+O | Load an image |
+| Ctrl+D | Duplicate the selected box |
+| Delete | Remove the selected box |
+| Ctrl+Enter | Export cutouts |
+| Mouse wheel | Zoom |
+| Right-drag | Pan |
+
+## Feedback
+
+Found a problem or have a feature idea? [Open an issue](https://github.com/TinySprite-Studios/TSS-Image-Tools/issues) and include the tool you were using, your steps and a screenshot where helpful.
+
+Third-party licence information is included in the `licenses` folder of the release.
